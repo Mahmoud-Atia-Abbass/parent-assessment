@@ -1,4 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+// main font
+@import url("https://fonts.googleapis.com/css?family=SF+NS+Display:regular&display=swap");
+
+body {
+  font-family: "SF NS Display", sans-serif;
+  background-color: #80808008;
+}
+
+// Global variables
+:root {
+  // colors
+  --base-color: #8e44ad;
+  --dark-color: #34495e;
+  --light-color: #7f8c8d;
+
+  // fonts sizes
+  --heading-font-size: 25px;
+  --base-font-size: 15px;
+  --second-font-size: 14px;
+}
