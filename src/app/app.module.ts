@@ -7,6 +7,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UsersModule } from './users/users.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxsModule } from '@ngxs/store';
+import { LoginState } from './state/authenticatio.state';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { AuthenticationModule } from './authentication/authentication.module';
     NgbModule,
     UsersModule,
     AuthenticationModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule,
+    NgxsModule.forRoot([LoginState])
   ],
   providers: [],
   bootstrap: [AppComponent]
