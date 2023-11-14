@@ -1,0 +1,23 @@
+nav {
+  padding: 1rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+  .navbar-nav {
+    margin-left: auto;
+
+    .nav-item {
+      text-transform: uppercase;
+      margin: 0 10px;
+
+      .nav-link.action {
+        border-radius: 20px;
+        background-color: #8e44ad;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        color: white;
+        padding: 11px 22px;
+        text-transform: uppercase;
+        line-height: 18px;
+      }
+    }
+  }
+}
