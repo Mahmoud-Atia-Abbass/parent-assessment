@@ -13,16 +13,24 @@
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" id="username" formControlName="username" class="form-control" placeholder="Username...">
+            <span class="error"
+                *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched">
+                This field is required
+            </span>
         </div>
 
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" id="username" formControlName="password" class="form-control" placeholder="********">
+            <input type="password" id="password" formControlName="password" class="form-control" placeholder="********">
+            <span class="error"
+                *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+                This field is required
+            </span>
         </div>
 
         <div class="mb-2 form-actions">
             <a href="#" title="Forgot password">Forgot password?</a>
-            <button class="btn" (click)="submit()">Login</button>
+            <button class="btn" [disabled]="!loginForm.valid" (click)="submit()">Login</button>
         </div>
     </form>
 

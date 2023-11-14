@@ -56,6 +56,12 @@ $small: 600px;
       color: var(--light-color);
     }
 
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+
     .form-actions {
       display: flex;
       align-items: center;
