@@ -17,8 +17,8 @@ import { AuthenticationModule } from './authentication/authentication.module';
     AppRoutingModule,
     NgbModule,
     UsersModule,
-    SharedModule,
-    AuthenticationModule
+    AuthenticationModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
