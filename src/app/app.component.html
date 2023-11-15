@@ -1,2 +1,3 @@
 <app-navigation></app-navigation>
 <router-outlet></router-outlet>
+<app-toast *ngIf="toast?.raise" [message]="toast.message" [type]="toast.type"></app-toast>

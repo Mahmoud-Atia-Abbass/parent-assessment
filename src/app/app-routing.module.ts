@@ -5,8 +5,9 @@ import { LoginComponent } from './authentication/login/login.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'users', component: UserListComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'users', component: UserListComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({

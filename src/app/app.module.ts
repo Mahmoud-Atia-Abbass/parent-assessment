@@ -10,6 +10,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { LoginState } from './state/authenticatio.state';
+import { UsersState } from './state/users-list.state';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { LoginState } from './state/authenticatio.state';
     AuthenticationModule,
     SharedModule,
     HttpClientModule,
-    NgxsModule.forRoot([LoginState])
+    NgxsModule.forRoot([LoginState, UsersState])
   ],
   providers: [],
   bootstrap: [AppComponent]

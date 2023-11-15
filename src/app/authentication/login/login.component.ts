@@ -1,8 +1,8 @@
-import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Actions, Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { Select, Store } from '@ngxs/store';
+import { Observable, Subscription } from 'rxjs';
 import { LoginCredentials } from 'src/app/models/login.model';
 import { LoginAction } from 'src/app/state/authenticatio.actions';
 import { LoginState } from 'src/app/state/authenticatio.state';
@@ -15,16 +15,19 @@ import { LoginState } from 'src/app/state/authenticatio.state';
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
+  subManager = new Subscription();
 
-  @Select(LoginState.loginState)
+  @Select(LoginState.loginToken)
   loginState$!: Observable<LoginCredentials>;
 
   constructor(
     private fb: FormBuilder,
     private store: Store,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.subscribeToLoginState();
     this.createFrom();
   }
 
@@ -34,6 +37,16 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required]],
     });
     console.log(this.loginForm)
+  }
+
+  subscribeToLoginState() {
+    this.subManager.add(
+      this.loginState$.subscribe((response) => {
+        if (response) {
+          this.router.navigate(['/users']);
+        }
+      })
+    )
   }
 
 
