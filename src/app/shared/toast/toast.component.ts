@@ -5,15 +5,9 @@ import { Component, Input, OnChanges } from '@angular/core';
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss']
 })
-export class ToastComponent implements OnChanges {
+export class ToastComponent {
 
-  @Input() raise!: boolean;
   @Input() message!: string;
   @Input() type!: string;
-
-
-  ngOnChanges() {
-    console.log(this.raise);
-  }
 
 }
