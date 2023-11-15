@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastComponent } from './toast/toast.component';
-
-
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -21,6 +20,7 @@ import { ToastComponent } from './toast/toast.component';
     ReactiveFormsModule,
     FormsModule,
     ToastComponent,
-  ]
+  ],
+  providers: [AuthGuard]
 })
 export class SharedModule { }

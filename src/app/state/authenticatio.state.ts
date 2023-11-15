@@ -10,7 +10,6 @@ export interface LoginStateModel {
     toast?: ToastModel;
 }
 
-
 @State<string[]>({
     name: 'LoginState',
     defaults: []
@@ -18,9 +17,7 @@ export interface LoginStateModel {
 @Injectable()
 export class LoginState {
 
-
     constructor(private authService: AuthService) { };
-
 
     @Selector()
     static loginToken(state: LoginStateModel) {
@@ -51,7 +48,6 @@ export class LoginState {
         );
     }
 
-
     @Action(SaveCredentialsAction)
     saveCredentialsAction({ }: StateContext<LoginStateModel>, { token }: SaveCredentialsAction) {
         this.authService.saveCredentials(token);
@@ -66,10 +62,9 @@ export class LoginState {
         );
     }
 
-
     @Action(PerfromToastAction)
     perfromToastAction({ setState }: StateContext<LoginStateModel>, { toast }: PerfromToastAction) {
         setState({ toast: toast });
-        setTimeout(() => setState({ toast: { raise: false, message: '', type: '' } }), 2000);
+        setTimeout(() => setState({ toast: { raise: false, message: '', type: '' } }), 5000);
     };
 }
