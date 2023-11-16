@@ -1,0 +1,138 @@
+.breadcrumb {
+  padding: 1rem 0;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  &__pages {
+    font-size: 12px;
+    color: var(--base-color);
+  }
+
+  &__heading {
+    color: var(--dark-color);
+    font-size: 30px;
+  }
+
+  .add-button {
+    margin: 0 10px;
+
+    button {
+      border-radius: 20px;
+      background-color: var(--base-color);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+      color: white;
+      padding: 11px 22px;
+      line-height: 18px;
+    }
+  }
+}
+// breadcrumb
+
+// Grid
+.users-list {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+
+  .users-grid {
+    padding: 1.5rem;
+  }
+
+  .grid-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .grid-row {
+    border-radius: 17px;
+    padding: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &.selected {
+      background-color: #8e44ad;
+      color: white;
+    }
+
+    &:hover:not(.selected) {
+      background-color: rgba(142, 68, 173, 0.05);
+    }
+
+    .row-details {
+      img {
+        width: 80px;
+        margin: 0 1rem;
+      }
+    }
+  }
+
+  .row-actions {
+    button {
+      margin: 0 5px;
+      border: 2px solid var(--base-color);
+      padding: 3px 7px;
+
+      &.open-right {
+        border: none;
+      }
+
+      ng-icon {
+        color: var(--base-color);
+        font-size: 18px;
+      }
+    }
+  }
+
+  .single-user {
+    background-color: #f5f5f5;
+    box-shadow: -2px 0 4px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0 10px 10px 0;
+
+    .actions {
+      button {
+        width: 45%;
+        margin: 0 5px;
+        border: 2px solid var(--base-color);
+        padding: 3px 7px;
+        border-radius: 18px;
+        color: var(--base-color);
+        padding: 6px;
+
+        &.edit {
+          background-color: var(--base-color);
+          color: white;
+        }
+      }
+    }
+  }
+}
+// Modal
+.modal-footer {
+  button {
+    border-radius: 20px;
+    background-color: var(--base-color);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: 11px 22px;
+    line-height: 18px;
+    width: 45%;
+
+    &.reject {
+      color: var(--base-color);
+      background-color: white;
+      border: 2px solid var(--base-color);
+    }
+  }
+}
+
+label {
+  font-size: var(--second-font-size);
+  color: var(--light-color);
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-left: 10px;
+}

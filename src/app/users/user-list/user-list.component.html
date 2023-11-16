@@ -1,0 +1,165 @@
+<section class="breadcrumb">
+    <div class="container d-flex align-items-center justify-content-between">
+        <div>
+            <div class="pb-3 breadcrumb__pages">
+                <span>Home</span>
+                <span> / </span>
+                <span>Dashboard</span>
+            </div>
+            <h4 class="breadcrumb__heading">
+                Users List
+            </h4>
+        </div>
+        <div class="add-button">
+            <button class="btn" (click)="openEdit()">
+                <ng-icon name="heroPlus"></ng-icon>
+                New User
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Users List -->
+<section class="container my-5 px-0">
+    <section class="users-list row justify-content-between">
+
+        <div class="users-grid" [ngClass]="{ 'col-sm-9': (activeProfile ? activeProfile.active : false) }">
+
+            <div class="grid-header">
+                <div>User</div>
+                <div>Actions</div>
+            </div>
+
+            <div class="grid-body">
+
+                <ng-container *ngFor="let item of usersList; trackBy: trackByFn">
+                    <!-- Single Row here -->
+                    <div class="grid-row" (click)="activeUser(item.id)" [ngClass]="{ 'selected': item.active }">
+                        <!-- user -->
+                        <div class="row-details d-flex align-items-center">
+                            <img class="rounded-circle" [src]="item.avatar" [alt]="item.first_name"
+                                [title]="item.first_name">
+                            <p>{{item.first_name}} {{item.last_name}}</p>
+                        </div>
+
+                        <!-- Actions -->
+                        <ng-container *ngIf="!item.active">
+                            <div class="row-actions">
+
+                                <!-- Edit -->
+                                <button class="btn action" (click)="openEdit(item, $event)">
+                                    <ng-icon name="heroPencil"></ng-icon>
+                                </button>
+                                <!--  -->
+
+                                <!-- edit Modal -->
+                                <ng-template #editModal let-modal>
+                                    <div class="modal-body">
+                                        <form [formGroup]="userForm">
+                                            <!--  -->
+                                            <div>
+                                                <label for="first_name" class="form-label">First name</label>
+                                                <input type="text" id="first_name" formControlName="first_name"
+                                                    class="form-control" placeholder="First name...">
+                                                <span class="error"
+                                                    *ngIf="userForm.get('first_name')?.hasError('required') && userForm.get('first_name')?.touched">
+                                                    This field is required
+                                                </span>
+                                            </div>
+                                            <!--  -->
+                                            <div>
+                                                <label for="last_name" class="form-label">Last name</label>
+                                                <input type="text" id="last_name" formControlName="last_name"
+                                                    class="form-control" placeholder="Last name...">
+                                                <span class="error"
+                                                    *ngIf="userForm.get('last_name')?.hasError('required') && userForm.get('last_name')?.touched">
+                                                    This field is required
+                                                </span>
+                                            </div>
+                                            <!--  -->
+                                            <div>
+                                                <label for="email" class="form-label">email</label>
+                                                <input type="text" id="email" formControlName="email"
+                                                    class="form-control" placeholder="email...">
+                                                <span class="error"
+                                                    *ngIf="userForm.get('email')?.hasError('required') && userForm.get('email')?.touched">
+                                                    This field is required
+                                                </span>
+                                            </div>
+                                            <!--  -->
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer d-flex align-items-center justify-content-between">
+                                        <button type="button" class="btn reject" (click)="modal.close('cancel')">
+                                            Cancel
+                                        </button>
+                                        <button type="button" class="btn approve" (click)="modal.close('create')">
+                                            Add
+                                        </button>
+                                    </div>
+                                </ng-template>
+                                <!--  -->
+
+                                <!-- Delete -->
+                                <button class="btn action" (click)="openDelete(item, $event)">
+                                    <ng-icon name="heroTrash"></ng-icon>
+                                </button>
+                                <!--  -->
+
+                                <!-- Delete Modal -->
+                                <ng-template #deleteModal let-modal>
+                                    <div class="modal-body">
+                                        <p class="text-center pt-3 text-body-secondary">
+                                            Are you sure you want to delete
+                                        </p>
+                                        <h6 class="text-center">{{item.first_name}} {{item.last_name}}</h6>
+                                    </div>
+                                    <div class="modal-footer d-flex align-items-center justify-content-between">
+                                        <button type="button" class="btn reject" (click)="modal.close('reject')">
+                                            No
+                                        </button>
+                                        <button type="button" class="btn approve" (click)="modal.close('approve')">
+                                            Yes
+                                        </button>
+                                    </div>
+                                </ng-template>
+                                <!--  -->
+
+                                <!-- open side -->
+                                <button class="btn open-right">
+                                    <ng-icon name="heroChevronRight"></ng-icon>
+                                </button>
+
+                            </div>
+                        </ng-container>
+
+                    </div>
+
+                </ng-container>
+
+            </div>
+        </div>
+
+
+        <section *ngIf="activeProfile?.active" [ngClass]="{'col-sm-3': activeProfile.active}"
+            class="single-user px-0 d-flex align-items-center justify-content-center">
+            <div class="w-100">
+                <div class="text-center mb-3">
+                    <img class="rounded-circle" [src]="activeProfile.avatar" [alt]="activeProfile.first_name">
+                </div>
+                <h4 class="mb-4 text-center">{{activeProfile.first_name}} {{activeProfile.last_name}}</h4>
+                <div class="actions d-flex align-items-center justify-content-center">
+                    <button class="btn edit" (click)="openEdit(activeProfile)">
+                        <ng-icon name="heroPencil"></ng-icon>
+                        Edit
+                    </button>
+                    <button class="btn delete" (click)="openDelete(activeProfile)">
+                        <ng-icon name="heroTrash"></ng-icon>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </section>
+</section>
