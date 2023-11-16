@@ -14,7 +14,7 @@ import { UsersState } from './state/users-list.state';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
