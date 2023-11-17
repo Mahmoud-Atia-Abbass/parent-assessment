@@ -70,7 +70,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   deleteUser(user: UserModel): void {
-    if (user.id === this.activeProfile.id) {
+    if (user.id === this.activeProfile?.id) {
       this.activeProfile['active'] = false;
     }
     this.store.dispatch(new DeleteUserAction(user.id));
